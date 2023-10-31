@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+
+.main{
+            display: flex;
+            
+            border: 1px solid black;
+            height: 300px;
+            width:300px;
+            flex-direction: column;
+            text-align: center;
+            font-size: 10px;
+            justify-content:center;
+            background-color: rgb(241,245,248);
+            margin: 100px;
+            padding-left: 10px;
+        }
+        #counterInput
+        {
+             width: 180px;
+             justify-content:center;
+
+        }
+        #counter{
+            display: flex;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 20px;
+            color: rgb(4,170,109);
+        }
+        #set{
+            width: 50px;
+            display: flex;
+            justify-content: center;
+        }
+  </style>
+</head>
+<body>
+    <div class="main">
+        <input type="text" id="counterInput" placeholder="enter no"/><br>
+        <button id="set">Set</button>
+  <h1>Counter App</h1>
+  <div id="counter"></div><br>
+ 
+  <div class="Stle">
+  
+  <button id="increase">Increase</button>
+  <button id="decrease">Decrease</button>
+  <button id="reset">Reset</button>
+    </div>
+</div>
+
+  <script>
+    
+    const counterElement = document.getElementById("counter");
+    const counterInput = document.getElementById("counterInput");
+    const setButton = document.getElementById("set");
+    const increaseButton = document.getElementById("increase");
+    const decreaseButton = document.getElementById("decrease");
+    const resetButton = document.getElementById("reset");
+
+    let count = 0;
+
+    function updateCounter() {
+      counterElement.textContent = count;
+    }
+
+    function updateCounterFromInput() {
+      const inputValue = parseInt(counterInput.value);
+      console.log(inputValue,)
+      if (!isNaN(inputValue)) {
+        count = inputValue;
+        updateCounter();
+      } else {
+        alert("Please enter a valid number.");
+      }
+    }
+
+    setButton.addEventListener("click", () => {
+      updateCounterFromInput();
+    });
+
+    increaseButton.addEventListener("click", () => {
+      count++;
+      updateCounter();
+    });
+
+    decreaseButton.addEventListener("click", () => {
+      count--;
+      updateCounter();
+    });
+
+    resetButton.addEventListener("click", () => {
+      count = 0;
+      counterInput.value = "";
+      updateCounter();
+    });
+  </script>
+</body>
+</html>
